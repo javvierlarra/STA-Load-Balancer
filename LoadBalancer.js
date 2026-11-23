@@ -1,3 +1,5 @@
+import { scenarios } from "./src/scenarios";
+
 export default class LoadBalancer {
   // import vite.config;
   // Очень важное примечание к этому заданию: все полезные нагрузки запросов должны быть заменены числовым значением строки. В противном случае задание будет считаться невыполненным.
@@ -22,9 +24,19 @@ export default class LoadBalancer {
     //   payload: "08319462", // Datos que envía el cliente
     //   work: 4              // Unidades de trabajo necesarias
     // }
+    switch(scenarios.name){
+      case "Servidores Iguales":
+        servidor.id++;
+        if (servidor.id ==4){
+          servidor.id=0;
+        }
+    }
     const server = this.servers[0];
 
+    
+
     // Envía la petición al servidor y devuelve su respuesta al cliente.
-    return sendToServer(server.id);
+  
+    return sendToServer(server);
   }
 }
